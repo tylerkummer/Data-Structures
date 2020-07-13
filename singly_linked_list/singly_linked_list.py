@@ -99,6 +99,7 @@ class LinkedList:
             current = current.get_next()
         value = self.tail.get_value()
         self.tail = current
+        self.tail.set_next(None)
         return value
 
     def contains(self, value):
