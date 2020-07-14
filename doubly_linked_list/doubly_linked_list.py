@@ -71,7 +71,16 @@ class DoublyLinkedList:
     """
 
     def add_to_tail(self, value):
-        pass
+        new_node = ListNode(value)
+        self.length += 1
+        if not self.head:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.prev = self.tail
+            self.tail.next = new_node
+            self.tail = new_node
+        return new_node
 
     """
     Removes the List's current tail node, making the 
@@ -80,7 +89,18 @@ class DoublyLinkedList:
     """
 
     def remove_from_tail(self):
-        pass
+        if not self.head:
+            return None
+        tail_value = self.tail.value
+        self.length -= 1
+        # delete the tail?
+        if self.tail.prev is not None:
+            self.tail.prev = None
+            self.tail = self.tail.prev
+        else:
+            self.head = None
+            self.tail = None
+        return tail_value
 
     """
     Removes the input node from its current spot in the 
