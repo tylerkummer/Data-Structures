@@ -55,9 +55,8 @@ class DoublyLinkedList:
             return None
         head_value = self.head.value
         self.length -= 1
-        # delete the head?
         if self.head.next is not None:
-            self.head.prev = None
+            self.head.next.prev = None
             self.head = self.head.next
         else:
             self.head = None
@@ -93,9 +92,8 @@ class DoublyLinkedList:
             return None
         tail_value = self.tail.value
         self.length -= 1
-        # delete the tail?
         if self.tail.prev is not None:
-            self.tail.prev = None
+            self.tail.prev.next = None
             self.tail = self.tail.prev
         else:
             self.head = None
@@ -108,7 +106,8 @@ class DoublyLinkedList:
     """
 
     def move_to_front(self, node):
-        pass
+        if not self.head:
+            return None
 
     """
     Removes the input node from its current spot in the 
@@ -116,7 +115,8 @@ class DoublyLinkedList:
     """
 
     def move_to_end(self, node):
-        pass
+        if not self.head:
+            return None
 
     """
     Deletes the input node from the List, preserving the 
@@ -124,7 +124,23 @@ class DoublyLinkedList:
     """
 
     def delete(self, node):
-        pass
+        if not self.head:
+            return None
+
+        self.length -= 1
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+        elif node == self.head:
+            self.head = node.next
+            self.head.prev = None
+        elif node == self.tail:
+            self.tail = node.prev
+            self.tail.next = None
+        else:
+            node.prev.next = None
+            node.next.prev = None
+        return node
 
     """
     Finds and returns the maximum value of all the nodes 
@@ -132,4 +148,16 @@ class DoublyLinkedList:
     """
 
     def get_max(self):
-        pass
+        if not self.head:
+            return None
+
+        current_node = self.head
+        max_value = 0
+
+        while current_node is not None:
+            if max_value < current_node.value:
+                max_value = current_node.value
+
+            current_node = current_node.next
+
+        return max_value
