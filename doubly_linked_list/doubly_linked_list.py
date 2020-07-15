@@ -54,7 +54,7 @@ class DoublyLinkedList:
             return
         head_value = self.head.value
         self.length -= 1
-        if self.head.next is not None:
+        if self.head.next:
             self.head.next.prev = None
             self.head = self.head.next
         else:
@@ -90,7 +90,7 @@ class DoublyLinkedList:
             return
         tail_value = self.tail.value
         self.length -= 1
-        if self.tail.prev is not None:
+        if self.tail.prev:
             self.tail.prev.next = None
             self.tail = self.tail.prev
         else:
@@ -156,7 +156,7 @@ class DoublyLinkedList:
         current_node = self.head
         max_value = 0
 
-        while current_node is not None:
+        while current_node:
             if max_value < current_node.value:
                 max_value = current_node.value
 
