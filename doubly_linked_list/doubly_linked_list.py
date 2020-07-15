@@ -141,8 +141,8 @@ class DoublyLinkedList:
             self.tail = node.prev
             self.tail.next = None
         else:
-            node.prev.next = None
-            node.next.prev = None
+            node.prev.next = node.next
+            node.next.prev = node.prev
 
     """
     Finds and returns the maximum value of all the nodes 

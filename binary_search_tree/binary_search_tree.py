@@ -63,11 +63,33 @@ class BSTNode:
     def get_max(self):
         # forget about the left subtree
         # iterate through the nodes using a loop construct
-        pass
+
+        # Check if node has value if not break out
+        if self.value is None:
+            return
+
+        # If right side of node is empty then its the max value and return it
+        if self.right is None:
+            return self.value
+        # If right side of node is populated then use recursion to re run the function to the next right value
+        # repeat process until the right side of node is empty
+        else:
+            return self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+        # Check if node has value if not break out
+        if self.value is None:
+            return
+
+        # Apply function to the node
+        fn(self.value)
+        # Apply function the the right of the node if it exists
+        if self.right is not None:
+            self.right.for_each(fn)
+        # Apply function to the left of the node if it exists
+        if self.left is not None:
+            self.left.for_each(fn)
 
     # Part 2 -----------------------
 
