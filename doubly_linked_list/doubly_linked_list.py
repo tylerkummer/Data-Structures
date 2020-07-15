@@ -107,7 +107,11 @@ class DoublyLinkedList:
 
     def move_to_front(self, node):
         if not self.head:
-            return None
+            return node
+        node_value = node.value
+        self.delete(node)
+        self.add_to_head(node_value)
+        return node
 
     """
     Removes the input node from its current spot in the 
@@ -116,7 +120,11 @@ class DoublyLinkedList:
 
     def move_to_end(self, node):
         if not self.head:
-            return None
+            return node
+        node_value = node.value
+        self.delete(node)
+        self.add_to_tail(node_value)
+        return node
 
     """
     Deletes the input node from the List, preserving the 
