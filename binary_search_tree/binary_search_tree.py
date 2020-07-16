@@ -122,7 +122,6 @@ class BSTNode:
         queue = Queue()
         # start by placing the root in the queue
         queue.enqueue(node)
-
         # need a while loop to iterate
         # what are we checking in the while statement?
         # while length of queue is greater than 0
@@ -165,9 +164,9 @@ class BSTNode:
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
-    def pre_order_dft(self, node):
-        pass
+    # def pre_order_dft(self, node):
+    #     pass
 
     # Print Post-order recursive DFT
-    def post_order_dft(self, node):
-        pass
+    # def post_order_dft(self, node):
+    #     pass
