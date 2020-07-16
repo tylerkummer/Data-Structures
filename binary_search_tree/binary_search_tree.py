@@ -9,6 +9,8 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+from queue import Queue
+from stack import Stack
 
 
 class BSTNode:
@@ -96,17 +98,68 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        # if the current node is None
+        # we know we've reached the end of a recursion
+        # (base case) we want to return
+        if self is None:
+            return
+        # check if we can "move left"
+        if self.left is not None:
+            self.left.in_order_print(node.left)
+        # visit the node by printing its value
+        print(self.value)
+        # check if we can "move right"
+        if self.right is not None:
+            self.right.in_order_print(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        # You should import the queue class from earlier in the
+        # week and use that class to implement this method
+        # Use a queue to form a "line"
+        # for the nodes to "get in"
+        queue = Queue()
+        # start by placing the root in the queue
+        queue.enqueue(node)
+
+        # need a while loop to iterate
+        # what are we checking in the while statement?
+        # while length of queue is greater than 0
+        while(queue.size > 0):
+            # dequeue item from front of queue
+            queue_deq = queue.dequeue()
+            # print that item
+            print(queue_deq)
+            # place current item's left node in queue if not None
+            if queue_deq.left is not None:
+                queue.enqueue(queue_deq.left)
+            # place current item's right node in queue if not None
+            if queue_deq.right is not None:
+                queue.enqueue(queue_deq.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        # initialize an empty stack
+        stack = Stack()
+        # push the root node onto the stack
+        stack.push(node)
+        # need a while loop to manager our iteration
+        # if stack is not empty enter the while loop
+        while(stack.size > 0):
+            # pop top item off the stack
+            stack_pop = stack.pop()
+            # print that item's value
+            print(stack_pop)
+            # if there is a right subtree
+            if stack_pop.right is not None:
+                # push right item onto the stack
+                stack.push(stack_pop.right)
+            # if there is a left subtree
+            if stack_pop.left is not None:
+                # push left item onto the stack
+                stack.push(stack_pop.left)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
