@@ -129,7 +129,7 @@ class BSTNode:
             # dequeue item from front of queue
             queue_deq = queue.dequeue()
             # print that item
-            print(queue_deq)
+            print(queue_deq.value)
             # place current item's left node in queue if not None
             if queue_deq.left is not None:
                 queue.enqueue(queue_deq.left)
@@ -150,7 +150,7 @@ class BSTNode:
             # pop top item off the stack
             stack_pop = stack.pop()
             # print that item's value
-            print(stack_pop)
+            print(stack_pop.value)
             # if there is a right subtree
             if stack_pop.right is not None:
                 # push right item onto the stack
